@@ -42,10 +42,17 @@ $height: 10;
 }
 .bg-main {
     background-image: url($url+"storage/images/bg-main.jpg");
-    height: 100%;
-    background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    filter: saturate(2);
-    -webkit-filter: saturate(2);
+    background-position: 50%;
+    height: 100vh;
+}
+$directon: (right, left, top, bottom);
+@each $dir in $directon {
+    .#{$dir}-0 {
+        #{$dir}: 0 !important;
+    }
+    .#{$dir}-unset {
+        #{$dir}: unset !important;
+    }
 }

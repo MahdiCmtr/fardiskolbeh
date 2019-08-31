@@ -3,7 +3,7 @@
         <div class="row flex-row-reverse">
             <div class="col-md-4 mb-3">
                 <div class="input-group">
-                    <input type="text" class="form-control text-right" name="all" placeholder="جستجو در همه املاک <?= isset($_GET['search_category']) ? $_GET['search_category'] : 'همه املاک'; ?>" value="<?= isset($_GET['all']) ? $_GET['all'] : ''; ?>">
+                    <input type="text" class="form-control text-right" name="all" placeholder=" همه املا ک جستجو در" value="">
                     <input hidden name=" category" type="text" value="<?= isset($_GET['search_category']) ? $_GET['search_category'] : ''; ?>">
                 </div>
             </div>
@@ -57,5 +57,7 @@
                 </div>
             </div>
         </div>
-        <input class="btn btn-danger mt-4 px-4" type="submit" value="جستجو">
+        <div class="row dir-left">
+            <input class="btn btn-primary mt-4 px-4" type="submit" value="جستجو">
+        </div>
 </form>

@@ -233,11 +233,41 @@ a {
 
 .bg-main {
   background-image: url("http://localhost:8000/storage/images/bg-main.jpg");
-  height: 100%;
-  background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  filter: saturate(2);
-  -webkit-filter: saturate(2);
+  background-position: 50%;
+  height: 100vh;
+}
+
+.right-0 {
+  right: 0 !important;
+}
+
+.right-unset {
+  right: unset !important;
+}
+
+.left-0 {
+  left: 0 !important;
+}
+
+.left-unset {
+  left: unset !important;
+}
+
+.top-0 {
+  top: 0 !important;
+}
+
+.top-unset {
+  top: unset !important;
+}
+
+.bottom-0 {
+  bottom: 0 !important;
+}
+
+.bottom-unset {
+  bottom: unset !important;
 }
 

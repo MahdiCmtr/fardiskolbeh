@@ -8,9 +8,9 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"/>
 </head>
-<body class=@yield("bodyClass")>
+<body class=@yield("bodyClass") bg-white>
     <!--Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark elegant-color-dark px-3 font-small">
+    <nav class="navbar navbar-dark fixed-top navbar-expand-md scrolling-navbar indigo py-0 font-small">
         <a class="navbar-brand" href={{route('index')}}>فردیس کلبه</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-555"
             aria-controls="navbarSupportedContent-555" aria-expanded="false" aria-label="Toggle navigation">
@@ -68,12 +68,12 @@
         </div>
     </nav>
     <!--Navbar -->
-    <section class="content h-100">
+    <section class="content h-100 mt-5">
         @yield("content")
     </section>
-    <nav class="navbar fixed-bottom navbar-dark elegant-color-dark justify-content-center">
+    {{-- <nav class="navbar fixed-bottom navbar-dark elegant-color-dark justify-content-center">
         <a class="navbar-brand font-16" href="#">تمامی حقوق این وبسیایت متعلق به فردیس کلبه میباشد</a>
-    </nav>
+    </nav> --}}
     <script src="{{ asset('js/app.js') }}" defer></script>
 </body>
 </html>

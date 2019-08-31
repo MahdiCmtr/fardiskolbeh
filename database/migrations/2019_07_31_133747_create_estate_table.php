@@ -23,6 +23,7 @@ class CreateEstateTable extends Migration
             $table->string('address');
             $table->string('phone', 13);
             $table->text('description');
+            $table->text('img')->default('logo.png');
             $table->string('state');
             $table->enum('type', Estate::TYPE);
             $table->timestamp('published_at')->nullable();
