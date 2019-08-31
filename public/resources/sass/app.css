@@ -1,0 +1,8 @@
+@import url(https://fonts.googleapis.com/css?family=Nunito);.mahdi {
+  background: red;
+}
+
+.mahdi .dir-right {
+  direction: rtl;
+}
+

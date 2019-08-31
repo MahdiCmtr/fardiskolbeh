@@ -1,0 +1,51 @@
+@import "fonts";
+@import "variables";
+@import "publicClass";
+body {
+    font-family: IRANSans !important;
+    font-weight: 300;
+    direction: rtl;
+    background-color: #e2e2e2;
+    margin: 0;
+    height: 100%;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+input,
+textarea {
+    font-family: IRANSans !important;
+}
+h1 {
+    font-weight: bold;
+}
+a {
+    text-decoration: none !important;
+    color: inherit;
+}
+$font: 2;
+@while $font < 60 {
+    .font-#{$font} {
+        font-size: $font + px !important;
+    }
+    $font: $font + 2;
+}
+$height: 10;
+@while $height <= 100 {
+    .h-#{$height}vh {
+        height: $height + vh !important;
+    }
+    $height: $height + 10;
+}
+.bg-main {
+    background-image: url($url+"storage/images/bg-main.jpg");
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: saturate(2);
+    -webkit-filter: saturate(2);
+}
