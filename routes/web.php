@@ -1,5 +1,14 @@
 <?php
 
+
+Route::group(['prefix' => 'user', 'middleware' => 'auth'], function ($router) {
+    $router->get('/dashboard', [
+        'uses' => 'User@index',
+        'as' => 'user.dashboard'
+    ]);
+});
+
+
 Route::group([], function ($router) {
     $router->get('/buy-sales', [
         'uses' => 'EstateController@buyEstateList',
@@ -20,6 +29,8 @@ Route::group([], function ($router) {
         'as' => 'list-Estate-category-rent'
     ]);
 });
+
+
 Route::get('/', [
     'uses' => 'EstateController@index',
     'as' => 'index'
@@ -34,6 +45,9 @@ Route::group([], function ($router) {
         'uses' => 'Auth\LoginController@logout'
     ]);
 });
+
+
+
 
 
 Auth::routes();

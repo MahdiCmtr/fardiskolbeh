@@ -8,6 +8,8 @@ use App\Rules\PhoneNumberFilter;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class RegisterController extends Controller
 {
@@ -75,14 +77,20 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'email' => $data['email'],
-            'name' => $data['name'],
-            'password' => HASH::make($data['password']),
-            'type' => User::STATE_NORMAL,
-            'phone' => mobileGenerator($data['phone']),
-            'avatar' => $data['avatar'],
-            'state' => 'enable'
-        ]);
+        try {
+            $avatar = Storage::disk('public')->put('images', $data['avatar']);
+            $avatar = explode('/', $avatar)[1];
+            return User::create([
+                'email' => $data['email'],
+                'name' => $data['name'],
+                'password' => HASH::make($data['password']),
+                'type' => User::STATE_NORMAL,
+                'phone' => mobileGenerator($data['phone']),
+                'avatar' => $avatar,
+                'state' => 'enable'
+            ]);
+        } catch (Exception $exception) {
+            return response(['message' => 'خظای رخ داده است'], 500);
+        }
     }
 }

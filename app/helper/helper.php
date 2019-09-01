@@ -15,3 +15,11 @@ if (!function_exists('mobileGenerator')) {
         }
     }
 }
+
+if (!function_exists('hashIds')) {
+    function hashIds($number)
+    {
+        $hashids = new \Hashids\Hashids();
+        return $hashids->encode($number, 10);
+    }
+}

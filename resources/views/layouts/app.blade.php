@@ -44,7 +44,7 @@
                     <div class="dropdown-menu dropdown-menu-lg-right dropdown-dark text-right"
                     aria-labelledby="navbarDropdownMenuLink-55" style="right: -150px">
                         <a class="dropdown-item" href="#">تیکت</a>
-                        <a class="dropdown-item" href="#">پنل</a>
+                        <a class="dropdown-item" href={{route('user.dashboard')}}>پنل</a>
                         <a class="dropdown-item" href={{url('/logout')}}>خروج</a>
                     </div>
                 </li>
