@@ -43,6 +43,8 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-lg-right dropdown-dark text-right"
                     aria-labelledby="navbarDropdownMenuLink-55" style="right: -150px">
+                        <a class="small" href="#">خوش آمدید {{auth()->user()->name}}</a>
+                        <hr class="mt-1">
                         <a class="dropdown-item" href="#">تیکت</a>
                         <a class="dropdown-item" href={{route('user.dashboard')}}>پنل</a>
                         <a class="dropdown-item" href={{url('/logout')}}>خروج</a>

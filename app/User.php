@@ -41,4 +41,24 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    public function isAdmin()
+    {
+        return $this->type == self::STATE_ADMIN;
+    }
+    public function isAdvisor()
+    {
+        return $this->type == self::STATE_ADVISOR;
+    }
+    public function isNormal()
+    {
+        return $this->type == self::STATE_NORMAL;
+    }
+
+    // relation
+    public function estate()
+    {
+        return $this->hasMany(Estate::class, 'user_id', 'id');
+    }
 }

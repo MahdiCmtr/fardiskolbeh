@@ -10,6 +10,11 @@ class Estate extends Model
     const TYPE_BUY = 'buy';
     const TYPE_RENT = 'rent';
     const TYPE = [self::TYPE_BUY, self::TYPE_RENT];
+
+    const STATE_ENABLE = 'enable';
+    const STATE_DISABLE = 'disable';
+    const STATE_PENDING = 'pending';
+    const STATE = [self::STATE_ENABLE, self::STATE_DISABLE, self::STATE_PENDING];
     protected $fillable = [
         'user_id', 'category_id', 'slug', 'title', 'address', 'phone', 'description', 'img', 'state', 'type', 'published_at'
     ];
@@ -26,8 +31,8 @@ class Estate extends Model
         $estate['category'] = $this->category()->get(['id', 'title']);
         $estate['user'] = $this->user()->get(['id', 'name']);
         $estate['views'] = $this->views->count();
-        unset($estate['state']);
-        unset($estate['published_at']);
+        $estate['state'];
+        $estate['published_at'];
         unset($estate['created_at']);
         return $estate;
     }

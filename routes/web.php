@@ -3,8 +3,16 @@
 
 Route::group(['prefix' => 'user', 'middleware' => 'auth'], function ($router) {
     $router->get('/dashboard', [
-        'uses' => 'User@index',
+        'uses' => 'UserController@index',
         'as' => 'user.dashboard'
+    ]);
+    $router->get('/profile', [
+        'uses' => 'UserController@profile',
+        'as' => 'user.profile'
+    ]);
+    $router->post('/profile', [
+        'uses' => 'UserController@profileUpdate',
+        'as' => 'user.profile.update'
     ]);
 });
 
