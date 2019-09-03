@@ -3,6 +3,7 @@
 namespace App\Service\Users;
 
 use App\Http\Requests\user\ProfileUserRequest;
+use App\Http\Requests\user\UserTicketRequest;
 use App\Service\BaseService;
 use App\User;
 use Exception;
@@ -19,27 +20,28 @@ class UserService extends BaseService
     }
     public static function profile()
     {
-        $user = auth()->user();
-        return view('user.profile', compact('user'));
+        return view('user.profile');
     }
     public static function profileUpdate(ProfileUserRequest $request)
     {
+        $user = auth()->user();
         try {
             if (!is_null($request->avatar)) {
                 Storage::disk('public')->delete("images/" . auth()->user()->avatar);
                 $avatar = Storage::disk('public')->put('images', $request->avatar);
-                $avatar = ['avatar' => explode('/', $avatar)[1]];
+                $user->avatar = explode('/', $avatar)[1];
             }
-            $newPassword = $request->new_password ? ['password' => $request->new_password] : '';
-            $UpdateUser = auth()->user()->update([
-                'email' => $request->email,
-                'phone' => $request->phone,
-                $newPassword,
-                $avatar
-            ]);
-            dd($UpdateUser);
+            !is_null($request->newPassword) ? $user->password = Hash::make($request->newPassword) : null;
+            $user->name = $request->name;
+            $user->phone = $request->phone;
+            $user->save();
+            return view('user.profile', ['message' => 'با موفقیت انجام شد', 'color' => 'success']);
         } catch (Exception $ex) {
-            dd($ex);
+            return view('user.profile', ['message' => 'مشکلی به وجود آمده است', 'color', 'danger']);
         }
+    }
+    public static function UserTicket(UserTicketRequest $request)
+    {
+        return view('user.ticket');
     }
 }

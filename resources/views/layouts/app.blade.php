@@ -39,13 +39,13 @@
                     <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-55" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
                     <img src={{asset('storage/images/').'/'.auth()->user()->avatar}} class="rounded-circle z-depth-0"
-                        alt="avatar image">
+                        alt="avatar image" width="35">
                     </a>
                     <div class="dropdown-menu dropdown-menu-lg-right dropdown-dark text-right"
                     aria-labelledby="navbarDropdownMenuLink-55" style="right: -150px">
-                        <a class="small" href="#">خوش آمدید {{auth()->user()->name}}</a>
+                        <a class="small p-0" href="#">خوش آمدید {{auth()->user()->name}}</a>
                         <hr class="mt-1">
-                        <a class="dropdown-item" href="#">تیکت</a>
+                        <a class="dropdown-item" href="{{route('user.ticket')}}">تیکت</a>
                         <a class="dropdown-item" href={{route('user.dashboard')}}>پنل</a>
                         <a class="dropdown-item" href={{url('/logout')}}>خروج</a>
                     </div>

@@ -14,6 +14,10 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth'], function ($router) {
         'uses' => 'UserController@profileUpdate',
         'as' => 'user.profile.update'
     ]);
+    $router->get('/ticket', [
+        'uses' => 'UserController@UserTicket',
+        'as' => 'user.ticket'
+    ]);
 });
 
 

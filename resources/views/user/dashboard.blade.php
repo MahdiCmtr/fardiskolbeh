@@ -1,8 +1,5 @@
 @extends('layouts.app')
 @section('content')
-{{--  @php
-    dd(verta(2019))
-@endphp  --}}
 @php($UserEstate = json_decode($UserEstate))
     <div class="container p-4 text-right dir-right">
         <div class="row justify-content-between">

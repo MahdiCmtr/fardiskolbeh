@@ -1,7 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container text-right dir-right">
+<div class="container text-right dir-right pt-4">
+    @if (isset($message))
+    <div class="alert alert-{{$color}} alert-dismissible fade show" role="alert">
+            {{$message}}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    @endif
     <div class="row justify-content-center p-4">
         @include('user.particle.nav')
         <div class="col-6">
@@ -13,7 +21,7 @@
                             <div class="col">
                                 <!-- First name -->
                                 <div class="md-form">
-                                    <input id="RegisterFormFirstName" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ $user->name }}" required autocomplete="name" autofocus>
+                                    <input id="RegisterFormFirstName" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ auth()->user()->name }}" required autocomplete="name" autofocus>
                                     <label class="right-0 left-unset" for="RegisterFormFirstName"> نام و نام خانوادگی</label>
                                     @error('name')
                                         <span class="invalid-feedback" role="alert">
@@ -25,7 +33,7 @@
                         </div>
                         <!-- E-mail -->
                         <div class="md-form mt-0">
-                            <input id="RegisterFormEmail" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $user->email }}" required autocomplete="email">
+                            <input id="RegisterFormEmail" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ auth()->user()->email }}" required autocomplete="email">
                             <label class="right-0 left-unset" for="RegisterFormEmail">ایمیل(نام کاربری)</label>
                             @error('email')
                                 <span class="invalid-feedback" role="alert">
@@ -45,12 +53,12 @@
                         </div>
                         <!-- Confirm Password -->
                         <div class="md-form">
-                            <input type="password" id="RegisterFormnew_Password" class="form-control" aria-describedby="RegisterFormConfirmPasswordHelpBlock" name="new_Password">
+                            <input type="password" id="RegisterFormnew_Password" class="form-control" aria-describedby="RegisterFormConfirmPasswordHelpBlock" name="newPassword">
                             <label class="right-0 left-unset" for="RegisterFormnew_Password">رمز عبور جدید</label>
                         </div>
                         <!-- Phone number -->
                         <div class="md-form">
-                            <input id="RegisterFormPhone" type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ $user->phone }}" required autocomplete="phone">
+                            <input id="RegisterFormPhone" type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ auth()->user()->phone }}" required autocomplete="phone">
                             <label class="right-0 left-unset" for="RegisterFormPhone">موبایل</label>
                             @error('phone')
                                 <span class="invalid-feedback" role="alert">
