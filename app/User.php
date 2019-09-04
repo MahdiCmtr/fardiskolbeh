@@ -61,4 +61,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(Estate::class, 'user_id', 'id');
     }
+    public function ticket()
+    {
+        return $this->hasMany(Ticket::class, 'user_id', 'id');
+    }
 }

@@ -14,22 +14,23 @@ class CreateTicketTable extends Migration
     public function up()
     {
         Schema::create('ticket', function (Blueprint $table) {
-            $table->unsignedBigInteger('id');
-            $table->bigIncrements('user_id');
-            $table->string('message_request');
-            $table->unsignedBigInteger('user_id_response')->nullable();
-            $table->string('message_response')->nullable();
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('user_id');
+            $table->string('title');
+            $table->string('message');
+            $table->unsignedBigInteger('parent_id')->nullable();
+            $table->boolean('view');
             $table->timestamps();
 
-            $table->foreign('user_id_request')
+            $table->foreign('user_id')
                 ->references('id')
                 ->on('users')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
 
-            $table->foreign('user_id_response')
+            $table->foreign('parent_id')
                 ->references('id')
-                ->on('users')
+                ->on('ticket')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
         });

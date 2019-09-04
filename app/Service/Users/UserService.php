@@ -42,6 +42,21 @@ class UserService extends BaseService
     }
     public static function UserTicket(UserTicketRequest $request)
     {
-        return view('user.ticket');
+        $UserTicket = auth()->user()->ticket;
+        // recursive Function
+        AllTicket($UserTicket);
+        $Alltickets = [];
+        function AllTicket($UserTicket)
+        {
+            foreach ($UserTicket as $ticket) {
+                $Alltickets[] = $ticket;
+                if ($ticket->answer != null) {
+                    AllTicket($ticket->answer);
+                }
+                return $Alltickets;
+            }
+        }
+        dd($Alltickets);
+        return view('user.request', ['tickets' => json_decode($UserTicket)]);
     }
 }

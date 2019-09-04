@@ -45,7 +45,6 @@
                     aria-labelledby="navbarDropdownMenuLink-55" style="right: -150px">
                         <a class="small p-0" href="#">خوش آمدید {{auth()->user()->name}}</a>
                         <hr class="mt-1">
-                        <a class="dropdown-item" href="{{route('user.ticket')}}">تیکت</a>
                         <a class="dropdown-item" href={{route('user.dashboard')}}>پنل</a>
                         <a class="dropdown-item" href={{url('/logout')}}>خروج</a>
                     </div>
