@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Category;
 use App\Estate;
+use App\Ticket;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
@@ -33,6 +34,7 @@ class RouteServiceProvider extends ServiceProvider
     {
         Route::model('category', Category::class);
         Route::model('estate', Estate::class);
+        Route::model('TicketId', Ticket::class);
     }
     /**
      * Define the routes for the application.

@@ -27,4 +27,8 @@ class Ticket extends Model
         $ticket['answer'] = $this->AnsTicket;
         return $ticket;
     }
+    // public function getRouteKeyName()
+    // {
+    //     return 'id';
+    // }
 }

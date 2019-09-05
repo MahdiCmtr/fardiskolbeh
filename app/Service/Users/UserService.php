@@ -3,6 +3,7 @@
 namespace App\Service\Users;
 
 use App\Http\Requests\user\ProfileUserRequest;
+use App\Http\Requests\user\ShowTicketRequest;
 use App\Http\Requests\user\UserTicketRequest;
 use App\Service\BaseService;
 use App\User;
@@ -43,20 +44,11 @@ class UserService extends BaseService
     public static function UserTicket(UserTicketRequest $request)
     {
         $UserTicket = auth()->user()->ticket;
-        // recursive Function
-        AllTicket($UserTicket);
-        $Alltickets = [];
-        function AllTicket($UserTicket)
-        {
-            foreach ($UserTicket as $ticket) {
-                $Alltickets[] = $ticket;
-                if ($ticket->answer != null) {
-                    AllTicket($ticket->answer);
-                }
-                return $Alltickets;
-            }
-        }
-        dd($Alltickets);
-        return view('user.request', ['tickets' => json_decode($UserTicket)]);
+        return view('user.ticket.request', ['tickets' => json_decode($UserTicket)]);
+    }
+    public static function ShowTicket(ShowTicketRequest $request)
+    {
+        $UserTicket = $request->TicketId;
+        return view('user.ticket.showTicket', ['tickets' => json_decode($UserTicket)]);
     }
 }

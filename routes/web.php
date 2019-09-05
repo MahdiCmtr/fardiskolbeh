@@ -18,6 +18,10 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth'], function ($router) {
         'uses' => 'UserController@UserTicket',
         'as' => 'user.ticket'
     ]);
+    $router->get('/ticket/{TicketId}', [
+        'uses' => 'UserController@ShowTicket',
+        'as' => 'user.ticket.show'
+    ]);
 });
 
 
