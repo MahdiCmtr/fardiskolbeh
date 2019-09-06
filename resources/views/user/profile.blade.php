@@ -12,7 +12,7 @@
     @endif
     <div class="row justify-content-center p-4">
         @include('user.particle.nav')
-        <div class="col-6">
+        <div class="col-lg-8 col-md-8">
             <div class="card">
                 <div class="card-body px-lg-5 pt-0">
                     <form class="text-center" style="color: #757575;" method="POST" action="{{ route('user.profile.update') }}" enctype="multipart/form-data">

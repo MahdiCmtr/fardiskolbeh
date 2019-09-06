@@ -17,7 +17,7 @@
                                 <small class="float-left text-muted">
                                     <i class="far fa-clock mx-1"></i>{{ Verta::persianNumbers(verta($tickets->updated_at)->format('j-n-Y H:i'))}}
                                 </small>
-                                <strong class="float-right primary-font text-primary">من</strong>
+                                <strong class="float-right primary-font text-primary">{{$tickets->user_id[0]->name}}</strong>
                             </div>
                             <hr class="w-100">
                             <p class="mb-0 w-100">

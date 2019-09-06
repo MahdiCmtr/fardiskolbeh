@@ -30,7 +30,7 @@ class Estate extends Model
         $estate['img'] = explode(',', $this->img);
         $estate['category'] = $this->category()->get(['id', 'title']);
         $estate['user'] = $this->user()->get(['id', 'name']);
-        $estate['views'] = $this->views->count();
+        $estate['views'] = $this->views()->count();
         $estate['state'];
         $estate['published_at'];
         unset($estate['created_at']);

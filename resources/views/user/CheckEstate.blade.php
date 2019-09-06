@@ -1,6 +1,5 @@
 @extends('layouts.app')
 @section('content')
-@php($UserEstate = json_decode($UserEstate))
     <div class="container p-4 text-right dir-right">
         <div class="row justify-content-between">
             @include('user.particle.nav')
@@ -10,7 +9,7 @@
                     <div class="card p-2 my-2">
                         <p class=""><a href={{$estate->state == 'enable' ? route('show-Estate',['estate'=>$estate->slug]) : '#'}}>{{$estate->title}}</a></p>
                         <div class="d-flex justify-content-between mt-4">
-                            <small>تعداد بازدید <span class="text-danger">{{$estate->views}}</span></small>
+                            <small>تعداد بازدید <span class="text-danger">{{$estate->views()->count()}}</span></small>
                             <small>
                                 {{$estate->published_at ? 'تاریخ انتشار ' . Verta::persianNumbers(verta($estate->published_at)->format('j-n-Y H:i')) : ''}}
                             </small>
@@ -29,6 +28,9 @@
                         </div>
                     </div>
                 @endforeach
+                <div class="d-flex justify-content-center pt-4">
+                    {{$UserEstate->links()}}
+                </div>
             </div>
         </div>
     </div>

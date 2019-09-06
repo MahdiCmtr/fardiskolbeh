@@ -2,11 +2,16 @@
 
 namespace App\Service\Users;
 
+use App\Estate;
+use App\Http\Requests\user\CheckEstateRequest;
 use App\Http\Requests\user\ProfileUserRequest;
+use App\Http\Requests\user\RegTicketRequest;
 use App\Http\Requests\user\ShowTicketRequest;
 use App\Http\Requests\user\UserTicketRequest;
 use App\Service\BaseService;
+use App\Ticket;
 use App\User;
+use App\View;
 use Exception;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
@@ -16,8 +21,12 @@ class UserService extends BaseService
     public static function index()
     {
         $user = auth()->user();
+        $userView = View::where('user_id', $user->id)->orderBy('updated_at', 'desc')->limit(4)->get('estate_id');
+        foreach ($userView as $userViewId) {
+            $UserViewEstate[] = Estate::where('id', $userViewId->estate_id)->get();
+        }
         $UserEstate = $user->estate()->orderBy('updated_at', 'DESC')->limit(4)->get();
-        return view('user.dashboard', compact('UserEstate'));
+        return view('user.panel', compact('UserViewEstate', 'UserEstate'));
     }
     public static function profile()
     {
@@ -41,14 +50,29 @@ class UserService extends BaseService
             return view('user.profile', ['message' => 'مشکلی به وجود آمده است', 'color', 'danger']);
         }
     }
+    public static function CheckEstate(CheckEstateRequest $request)
+    {
+        $user = auth()->user();
+        $UserEstate = $user->estate()->orderBy('updated_at', 'DESC')->paginate(10);
+        return view('user.CheckEstate', compact('UserEstate'));
+    }
     public static function UserTicket(UserTicketRequest $request)
     {
-        $UserTicket = auth()->user()->ticket;
+        $UserTicket = auth()->user()->ticket()->whereNull('parent_id')->orderBy('id', 'desc')->get();
         return view('user.ticket.request', ['tickets' => json_decode($UserTicket)]);
     }
     public static function ShowTicket(ShowTicketRequest $request)
     {
         $UserTicket = $request->TicketId;
         return view('user.ticket.showTicket', ['tickets' => json_decode($UserTicket)]);
+    }
+    public static function RegTiket(RegTicketRequest $request)
+    {
+        Ticket::create([
+            'user_id' => auth()->id(),
+            'title' => $request->title,
+            'message' => $request->description
+        ]);
+        return self::UserTicket(new UserTicketRequest);
     }
 }
