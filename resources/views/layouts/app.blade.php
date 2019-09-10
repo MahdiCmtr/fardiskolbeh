@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="description" content="فردیس کلبه جای برای خرید بهترین خانه" />
     <title>@yield('title','فردیس کلبه')</title>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"/>
@@ -76,5 +77,7 @@
         <a class="navbar-brand font-16" href="#">تمامی حقوق این وبسیایت متعلق به فردیس کلبه میباشد</a>
     </nav> --}}
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/mdb.min.js') }}" defer></script>
+    <script src="{{ asset('js/index.js') }}" defer></script>
 </body>
 </html>

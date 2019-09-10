@@ -1,5 +1,9 @@
 <?php
 
+header('Access-Control-Allow-Origin', '*');
+header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+header('Access-Control-Allow-Headers', ' Origin, Content-Type, Accept, Authorization, X-Request-With');
+header('Access-Control-Allow-Credentials', ' true');
 
 Route::group(['prefix' => 'user', 'middleware' => 'auth'], function ($router) {
     $router->get('/dashboard', [
@@ -29,6 +33,14 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth'], function ($router) {
     $router->get('/ticket/{TicketId}', [
         'uses' => 'UserController@ShowTicket',
         'as' => 'user.ticket.show'
+    ]);
+    $router->get('/add-estate', [
+        'uses' => 'UserController@addEstate',
+        'as' => 'user.add.estate'
+    ]);
+    $router->post('/add-estate', [
+        'uses' => 'UserController@addEstateStep1',
+        'as' => 'user.add.estate.step1'
     ]);
 });
 

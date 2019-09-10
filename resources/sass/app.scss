@@ -56,3 +56,15 @@ $directon: (right, left, top, bottom);
         #{$dir}: unset !important;
     }
 }
+.select-wrapper {
+    .caret {
+        right: unset !important;
+        left: 0;
+    }
+    .dropdown-content {
+        padding: 0;
+        .filtrable {
+            text-align: right;
+        }
+    }
+}

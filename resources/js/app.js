@@ -5,6 +5,8 @@
  */
 
 require("./bootstrap");
+require("axios");
+require("./index");
 // require("./mdb.min");
 // window.Vue = require("vue");
 

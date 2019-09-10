@@ -2,18 +2,22 @@
 
 namespace App\Service\Users;
 
+use App\Category;
 use App\Estate;
+use App\Http\Requests\user\AddEstateStep1Request;
 use App\Http\Requests\user\CheckEstateRequest;
 use App\Http\Requests\user\ProfileUserRequest;
 use App\Http\Requests\user\RegTicketRequest;
 use App\Http\Requests\user\ShowTicketRequest;
 use App\Http\Requests\user\UserTicketRequest;
+use App\Property;
 use App\Service\BaseService;
 use App\Ticket;
 use App\User;
 use App\View;
 use Exception;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Storage;
 
 class UserService extends BaseService
@@ -74,5 +78,17 @@ class UserService extends BaseService
             'message' => $request->description
         ]);
         return self::UserTicket(new UserTicketRequest);
+    }
+    public static function addEstate()
+    {
+        $category = Category::all();
+        return view('user.estate.addEstate', compact('category'));
+    }
+    public static function addEstateStep1(AddEstateStep1Request $request)
+    {
+        extract($request->validated());
+        $property = Property::where('category_id', $categoryEstate)->get();
+        $category = Category::find($categoryEstate);
+        return view('user.estate.addEstateStep1', compact('property', 'typeEstate', 'category'));
     }
 }

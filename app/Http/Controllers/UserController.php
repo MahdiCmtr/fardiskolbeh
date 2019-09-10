@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+
+use App\Http\Requests\user\AddEstateStep1Request;
 use App\Http\Requests\user\CheckEstateRequest;
 use App\Http\Requests\user\ProfileUserRequest;
 use App\Http\Requests\user\RegTicketRequest;
@@ -38,5 +40,13 @@ class UserController extends Controller
     public function RegTiket(RegTicketRequest $request)
     {
         return UserService::RegTiket($request);
+    }
+    public function addEstate()
+    {
+        return UserService::addEstate();
+    }
+    public function addEstateStep1(AddEstateStep1Request $request)
+    {
+        return UserService::addEstateStep1($request);
     }
 }

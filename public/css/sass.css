@@ -271,3 +271,16 @@ a {
   bottom: unset !important;
 }
 
+.select-wrapper .caret {
+  right: unset !important;
+  left: 0;
+}
+
+.select-wrapper .dropdown-content {
+  padding: 0;
+}
+
+.select-wrapper .dropdown-content .filtrable {
+  text-align: right;
+}
+

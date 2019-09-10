@@ -36911,7 +36911,11 @@ module.exports = function(module) {
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
-__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js"); // require("./mdb.min");
+__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
+
+__webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+
+__webpack_require__(/*! ./index */ "./resources/js/index.js"); // require("./mdb.min");
 // window.Vue = require("vue");
 
 /**
@@ -36995,6 +36999,35 @@ if (token) {
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     encrypted: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/index.js":
+/*!*******************************!*\
+  !*** ./resources/js/index.js ***!
+  \*******************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+
+document.addEventListener("DOMContentLoaded", DomLoaded);
+
+function DomLoaded() {
+  try {
+    $(".type-estate").materialSelect();
+    $(".category-estate").materialSelect();
+  } catch (errr) {}
+
+  try {
+    $('.file-upload1').file_upload();
+    $('.file-upload2').file_upload();
+    $('.file-upload3').file_upload();
+  } catch (errr) {}
+}
 
 /***/ }),
 
