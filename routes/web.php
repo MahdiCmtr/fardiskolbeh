@@ -38,10 +38,18 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth'], function ($router) {
         'uses' => 'UserController@addEstate',
         'as' => 'user.add.estate'
     ]);
-    $router->post('/add-estate', [
+    $router->get('/add-estate/step1', [
         'uses' => 'UserController@addEstateStep1',
         'as' => 'user.add.estate.step1'
     ]);
+    $router->post('/add-estate/finish', [
+        'uses' => 'UserController@addEstateStep2',
+        'as' => 'user.add.estate.step2'
+    ]);
+    // $router->get('/add-estate/finish', [
+    //     'uses' => 'UserController@addEstateFinish',
+    //     'as' => 'user.add.estate.finish'
+    // ]);
 });
 
 

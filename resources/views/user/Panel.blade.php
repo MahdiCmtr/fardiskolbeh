@@ -27,7 +27,7 @@
                 @foreach ($UserEstate as $Uestate)
                     <div class="col-lg-6 col-md-6 col-12">
                         <div class="card p-2 my-2">
-                            <p class=""><a href={{$Uestate->state == 'enable' ? route('show-Estate',['estate'=>$estate->slug]) : '#'}}>{{$Uestate->title}}</a></p>
+                            <p class=""><a href={{$Uestate->state == 'enable' ? route('show-Estate',['estate'=>$Uestate->slug]) : '#'}}>{{$Uestate->title}}</a></p>
                             <div class="d-flex justify-content-between mt-4">
                                 <small>تعداد بازدید <span class="text-danger">{{$Uestate->views()->count()}}</span></small>
                                 <small>

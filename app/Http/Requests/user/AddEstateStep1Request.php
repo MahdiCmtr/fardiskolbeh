@@ -35,7 +35,7 @@ class AddEstateStep1Request extends FormRequest
     {
         return [
             'typeEstate.required' => 'لطفا نوع معامله را بنویسید',
-            'typeEstate.In' => 'نوع معامله را در بازه خواسته شده انتخاب کنید',
+            'typeEstate.in' => 'نوع معامله انتخاب شده صحیح نیست',
             'categoryEstate.required' => 'لطفا دسته بندی را انتخاب کنید',
             'categoryEstate.exists' => 'دسته بندی وارد شده صحیح نیست'
         ];

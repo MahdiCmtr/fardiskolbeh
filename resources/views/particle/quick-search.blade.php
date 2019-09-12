@@ -1,15 +1,15 @@
-<form action="buy/search" method="GET">
+<form action="" method="GET">
     <div class="jumbotron pt-5 pb-3 bg-light">
         <div class="row flex-row-reverse">
             <div class="col-md-4 mb-3">
                 <div class="input-group">
-                    <input type="text" class="form-control text-right" name="all" placeholder=" همه املا ک جستجو در" value="">
-                    <input hidden name=" category" type="text" value="<?= isset($_GET['search_category']) ? $_GET['search_category'] : ''; ?>">
+                    <input type="text" class="form-control text-right" name="all" placeholder=" جستجو همه املاک در " value="">
+                    <input hidden name=" category" type="text" value="">
                 </div>
             </div>
             <div class="col-md-4 mb-3">
                 <div class="input-group pos-relative not-disable">
-                    <input type="text" class="form-control input_serach text-right not-disable" placeholder="فیلتر ملک" name="filter" autocomplete="off" value="<?= isset($_GET['filter']) ? $_GET['filter'] : ''; ?>">
+                    <input type="text" class="form-control input_serach text-right not-disable" placeholder="فیلتر ملک" name="filter" autocomplete="off" value="">
                     <div class="select_box_search not-disable pos-absolute left-0 d-none">
                         <div class="input_search not-disable w-100 p-3 border-bottom-1-search">
                             <input type="text" class="dir-right px-2 not-disable pb-2 w-100" placeholder="اینجا جستجو کنید">
@@ -53,7 +53,7 @@
             </div>
             <div class="col-md-4">
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control text-right" placeholder="همه محله ها" name="location" value="<?= isset($_GET['location']) ? $_GET['location'] : ''; ?>">
+                    <input type="text" class="form-control text-right" placeholder="همه محله ها" name="location" value="">
                 </div>
             </div>
         </div>

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class PropertyEstate extends Model
 {
     protected $table = 'estate_property';
-    protected $fillable = ['estate_id', 'property_id'];
+    protected $fillable = ['estate_id', 'property_id', 'value'];
 
     public function toArray()
     {

@@ -33,7 +33,7 @@
                     <div class="carousel-inner" role="listbox">
                         @foreach ($estate->img as $index => $image)
                             <div class="carousel-item {{$index == 0 ? 'active' : ''}}">
-                            <img class="d-block w-100" src={{asset('storage/estate_image/').'/'.$image}}
+                            <img class="d-block w-100" src={{asset('storage/').'/'.$image}}
                                 alt="fardiskolbeh فردیس کلبه">
                             </div>
                         @endforeach
@@ -52,7 +52,7 @@
                     <ol class="carousel-indicators">
                         @foreach ($estate->img as $index => $image)
                         <li data-target="#carousel-thumb" data-slide-to={{$index}} class="{{$index == 0 ? 'active' : ''}}">
-                            <img src="{{asset('storage/estate_image/').'/'.$image}}" width="70" height="70">
+                            <img src="{{asset('storage/').'/'.$image}}" width="70" height="70">
                         </li>
                         @endforeach
                     </ol>
@@ -60,14 +60,17 @@
                 <!--/.Carousel Wrapper-->
             </div>
             <div class="col-md-6">
-                <h1 class="text-right mt-2 dir-right">
+                <h5 class="text-right mt-2 dir-right">
                     {{$estate->title}}
-                </h1>
-                <p class="text-right mt-2">{{$estate->updated_at}}</p>
-                <a href="#"><button class="btn btn-danger btn-block py-2 mt-4">دریافت اطلاعات
+                </h5>
+                <div class="d-flex justify-content-between">
+                    <p class="text-right mt-2">{{Verta::persianNumbers(verta($estate->updated_at)->format('Y-n-j H:i'))}}</p>
+                    <p class="text-right mt-2">{{$estate->address}}</p>
+                </div>
+                <a href="#"><button class="btn btn-danger btn-block py-2 mt-1">دریافت اطلاعات
                         بیشتر</button></a>
                 <div Class="mt-4">
-                    <ul class="list-group list-group-flush p-0">
+                    <ul class="list-group list-group-flush p-0 dir-right">
                         @foreach ($estate->property_estate as $item)
                         <li class="list-group-item d-flex justify-content-between">
                             <a href="#" class="">{{$item->proprtyTitle}}</a>

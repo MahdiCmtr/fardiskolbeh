@@ -68,3 +68,6 @@ $directon: (right, left, top, bottom);
         }
     }
 }
+.modal-backdrop.fade.show{
+    z-index: 999;
+}

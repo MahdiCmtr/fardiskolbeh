@@ -3,7 +3,7 @@
     <div class="container p-4 text-right dir-right">
         <div class="row justify-content-between">
             @include('user.particle.nav')
-            <div class="col-lg-8">
+            <div class="col-lg-8 col-md-8">
                 <h6 class="border-bottom py-1 mb-4">آخرین ملک های شما </h6>
                 @foreach ($UserEstate as $estate)
                     <div class="card p-2 my-2">

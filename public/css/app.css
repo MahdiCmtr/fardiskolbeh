@@ -349,3 +349,7 @@ a {
   text-align: right;
 }
 
+.modal-backdrop.fade.show {
+  z-index: 999;
+}
+

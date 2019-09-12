@@ -4,8 +4,23 @@
         <div class="row justify-content-between">
             @include('user.particle.nav')
             <div class="col-lg-8">
-                <form action={{route('user.add.estate.step1')}} method="post">
-                    @csrf
+                @error('typeEstate')
+                <div class="alert pink text-light lighten-3 alert-dismissible fade show" role="alert">
+                    {{$message}}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                @enderror
+                @error('categoryEstate')
+                <div class="alert pink lighten-3 text-light alert-dismissible fade show" role="alert">
+                    {{$message}}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                @enderror
+                <form action={{route('user.add.estate.step1')}} method="get">
                     <h6 class="small">نوع <span class="text-success font-weight-bold">معامله</span> خود را انتخاب کنید</h6>
                     <select class="type-estate md-form mb-5" required name="typeEstate">
                         <option value="" disabled selected>بدون انتخاب</option>
